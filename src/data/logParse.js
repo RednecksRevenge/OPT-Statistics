@@ -1,6 +1,5 @@
 import moment, { duration } from "moment";
 import { maxBy, meanBy, minBy, sortBy } from "lodash";
-import { Tableau20 } from "chartjs-plugin-colorschemes/src/colorschemes/colorschemes.tableau";
 import { GAMETIME_SCALE } from "../components/shared/statisticsProvider";
 
 const scoreDatasets = [];
@@ -330,8 +329,8 @@ export function parseFps(log) {
       min,
       max,
       mean,
-      median
-  })
+      median,
+    });
     // appendLineData(performanceBarDatasets, "median", median, {
     //   type: "bar",
     //   borderColor: Tableau20[1],
