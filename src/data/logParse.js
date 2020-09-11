@@ -321,28 +321,39 @@ export function parseFps(log) {
     const mean = meanBy(dataset.data, "y");
     const median = sortBy(dataset.data, "y")[Math.ceil(dataset.data.length / 2)]
       .y;
-    appendLineData(performanceBarDatasets, "median", median, {
-      type: "bar",
-      borderColor: Tableau20[1],
-      backgroundColor: Tableau20[1],
-    });
-    appendLineData(performanceBarDatasets, "min", min, {
-      type: "bar",
-      borderColor: Tableau20[5],
-      backgroundColor: Tableau20[5],
+    const player = dataset.label;
+
+    performanceBarDatasets.push({
+      inactive: true,
       hidden: true,
-    });
-    appendLineData(performanceBarDatasets, "mean", mean, {
-      type: "bar",
-      borderColor: Tableau20[3],
-      backgroundColor: Tableau20[3],
-    });
-    appendLineData(performanceBarDatasets, "max", max, {
-      type: "bar",
-      borderColor: Tableau20[9],
-      backgroundColor: Tableau20[9],
-      hidden: true,
-    });
+      player,
+      min,
+      max,
+      mean,
+      median
+  })
+    // appendLineData(performanceBarDatasets, "median", median, {
+    //   type: "bar",
+    //   borderColor: Tableau20[1],
+    //   backgroundColor: Tableau20[1],
+    // });
+    // appendLineData(performanceBarDatasets, "min", min, {
+    //   type: "bar",
+    //   borderColor: Tableau20[5],
+    //   backgroundColor: Tableau20[5],
+    //   hidden: true,
+    // });
+    // appendLineData(performanceBarDatasets, "mean", mean, {
+    //   type: "bar",
+    //   borderColor: Tableau20[3],
+    //   backgroundColor: Tableau20[3],
+    // });
+    // appendLineData(performanceBarDatasets, "max", max, {
+    //   type: "bar",
+    //   borderColor: Tableau20[9],
+    //   backgroundColor: Tableau20[9],
+    //   hidden: true,
+    // });
   });
 
   return Promise.resolve({
